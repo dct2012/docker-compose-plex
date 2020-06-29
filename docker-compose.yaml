@@ -1,0 +1,16 @@
+version: '3.1'
+
+services:
+  plex:
+    image: plexinc/pms-docker:latest
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - VERSION=docker
+    ports:
+      - "127.0.0.1:32400:32400"
+    volumes:
+      - ./_plex/config:/config
+      - ./_plex/tv:/tv
+      - ./_plex/movies:/movies
+    restart: unless-stopped
